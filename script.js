@@ -1,5 +1,5 @@
 let menuItems = [
-    { name: "홍합탕", price: 14900 },
+    { name: "홍합탕 (회장의 손맛)", price: 14900 },
     { name: "대패 삼겹살", price: 12900 },
     { name: "매운 단백질", price: 8900 },
     { name: "마른 안주", price: 9900 },
@@ -8,6 +8,7 @@ let menuItems = [
     { name: "복소사 세트", price: 4900 },
     { name: "떼아정", price: 500 }
 ];
+
 // 페이지 로딩 시 스크롤을 맨 위로 이동시키는 함수
 window.onload = function() {
     window.scrollTo(0, 0); // 스크롤을 맨 위로 설정
