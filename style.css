@@ -12,6 +12,7 @@ body {
     align-items: center;
     height: 100vh;
     padding: 20px;
+    margin-top: 40px; 
 }
 
 .container {
@@ -86,13 +87,12 @@ button.delete-btn:hover {
 .quantity-control {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .quantity-control input[type="number"] {
     width: 50px;
     text-align: center;
-    margin: 0 5px;
 }
 
 .quantity-control button {
@@ -103,7 +103,7 @@ button.delete-btn:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 5px;
+    padding: 0;
 }
 
 .quantity-control button:hover {
