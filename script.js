@@ -39,33 +39,33 @@ function removeMenuItem(index) {
 
 function renderMenuItems() {
     const menuTable = document.getElementById("menuTable");
-    menuTable.innerHTML = `
+    menuTable.innerHTML = 
         <tr>
             <th>메뉴</th>
             <th>가격(₩)</th>
             <th>수량</th>
             <th>삭제</th>
         </tr>
-    `;
+    ;
 
     menuItems.forEach((item, index) => {
         const row = document.createElement("tr");
-        row.innerHTML = `
+        row.innerHTML = 
             <td>${item.name}</td>
-            <td><input type="number" id="menuPrice_${index}" value="${item.price}" min="0" inputmode="numeric" oninput="calculateTotal()"></td>
+            <td><input type="number" id="menuPrice_${index}" value="${item.price}" oninput="calculateTotal()"></td>
             <td class="quantity-control">
-                <input type="number" id="menuQty_${index}" value="0" min="0" inputmode="numeric" oninput="calculateTotal()" />
+                <input type="number" id="menuQty_${index}" value="0" min="0" oninput="calculateTotal()" />
                 <button type="button" onclick="changeQuantity(${index}, -1)">-</button>
                 <button type="button" onclick="changeQuantity(${index}, 1)">+</button>
             </td>
             <td><button class="delete-btn" onclick="removeMenuItem(${index})">삭제</button></td>
-        `;
+        ;
         menuTable.appendChild(row);
     });
 }
 
 function changeQuantity(index, delta) {
-    const quantityInput = document.getElementById(`menuQty_${index}`);
+    const quantityInput = document.getElementById(menuQty_${index});
     let currentValue = parseInt(quantityInput.value) || 0;
     currentValue += delta;
     if (currentValue < 0) currentValue = 0; // 수량이 음수로 떨어지지 않도록 제한
@@ -77,8 +77,8 @@ function calculateTotal() {
     let totalAmount = 0;
 
     menuItems.forEach((item, index) => {
-        const quantity = parseInt(document.getElementById(`menuQty_${index}`).value) || 0;
-        const price = parseInt(document.getElementById(`menuPrice_${index}`).value) || 0;
+        const quantity = parseInt(document.getElementById(menuQty_${index}).value) || 0;
+        const price = parseInt(document.getElementById(menuPrice_${index}).value) || 0;
         totalAmount += price * quantity;
     });
 
@@ -99,4 +99,3 @@ document.documentElement.addEventListener('touchend', function (event) {
           event.preventDefault(); 
         } lastTouchEnd = now; 
     }, false);
-    
