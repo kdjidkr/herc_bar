@@ -1,12 +1,14 @@
 let menuItems = [
     { name: "홍합탕 (회장의 손맛)", price: 14900 },
-    { name: "대패 삼겹살", price: 12900 },
-    { name: "매운 단백질", price: 8900 },
-    { name: "마른 안주", price: 9900 },
-    { name: "대아정", price: 11900 },
+    { name: "대패 산겹살", price: 15900 },
+    { name: "불닭 단백질", price: 8900 },
+    { name: "마른 안주(오징어쥐포마카로니)", price: 14900 },
+    { name: "매마른 안주(꾸이칩,마카로니)", price: 3900 },
     { name: "소아정", price: 6900 },
+    { name: "대아정", price: 12900 },
     { name: "복소사 세트", price: 4900 },
-    { name: "떼아정", price: 500 }
+    { name: "탄산음료", price: 1900 },
+    { name: "떼무요아정", price: 500 }
 ];
 
 // 페이지 로딩 시 스크롤을 맨 위로 이동시키는 함수
