@@ -136,3 +136,18 @@ h2 {
         font-size: 12px;
     }
 }
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.table-no {
+    margin-left: 20px;
+}
+
+.table-no label {
+    margin-right: 5px;
+}
+
