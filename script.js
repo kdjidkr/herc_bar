@@ -38,19 +38,12 @@ function removeMenuItem(index) {
 }
 
 function renderMenuItems() {
-    const menuTable = document.getElementById("menuTable");
-    menuTable.innerHTML = 
-        <tr>
-            <th>메뉴</th>
-            <th>가격(₩)</th>
-            <th>수량</th>
-            <th>삭제</th>
-        </tr>
-    ;
+    const menuTableBody = document.getElementById("menuTable").getElementsByTagName('tbody')[0];
+    menuTableBody.innerHTML = ''; // 이전 메뉴 목록 지우기
 
     menuItems.forEach((item, index) => {
         const row = document.createElement("tr");
-        row.innerHTML = 
+        row.innerHTML = `
             <td>${item.name}</td>
             <td><input type="number" id="menuPrice_${index}" value="${item.price}" oninput="calculateTotal()"></td>
             <td class="quantity-control">
@@ -59,13 +52,13 @@ function renderMenuItems() {
                 <button type="button" onclick="changeQuantity(${index}, 1)">+</button>
             </td>
             <td><button class="delete-btn" onclick="removeMenuItem(${index})">삭제</button></td>
-        ;
-        menuTable.appendChild(row);
+        `;
+        menuTableBody.appendChild(row);
     });
 }
 
 function changeQuantity(index, delta) {
-    const quantityInput = document.getElementById(menuQty_${index});
+    const quantityInput = document.getElementById(`menuQty_${index}`);
     let currentValue = parseInt(quantityInput.value) || 0;
     currentValue += delta;
     if (currentValue < 0) currentValue = 0; // 수량이 음수로 떨어지지 않도록 제한
@@ -77,25 +70,27 @@ function calculateTotal() {
     let totalAmount = 0;
 
     menuItems.forEach((item, index) => {
-        const quantity = parseInt(document.getElementById(menuQty_${index}).value) || 0;
-        const price = parseInt(document.getElementById(menuPrice_${index}).value) || 0;
+        const quantity = parseInt(document.getElementById(`menuQty_${index}`).value) || 0;
+        const price = parseInt(document.getElementById(`menuPrice_${index}`).value) || 0;
         totalAmount += price * quantity;
     });
 
     document.getElementById("totalAmount").innerText = totalAmount.toLocaleString();
 }
 
+// 터치 이벤트 중복 방지
 document.documentElement.addEventListener('touchstart', function (event) {
-     if (event.touches.length > 1) {
-          event.preventDefault(); 
-        } 
-    }, false);
+    if (event.touches.length > 1) {
+        event.preventDefault(); 
+    } 
+}, false);
 
-var lastTouchEnd = 0; 
+let lastTouchEnd = 0; 
 
 document.documentElement.addEventListener('touchend', function (event) {
-     var now = (new Date()).getTime();
-     if (now - lastTouchEnd <= 300) {
-          event.preventDefault(); 
-        } lastTouchEnd = now; 
-    }, false);
+    const now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+        event.preventDefault(); 
+    }
+    lastTouchEnd = now; 
+}, false);
