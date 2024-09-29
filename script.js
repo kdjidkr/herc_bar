@@ -52,9 +52,9 @@ function renderMenuItems() {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${item.name}</td>
-            <td><input type="text" id="menuPrice_${index}" value="${item.price}" oninput="calculateTotal()"></td>
+            <td><input type="number" id="menuPrice_${index}" value="${item.price}" min="0" inputmode="numeric" oninput="calculateTotal()"></td>
             <td class="quantity-control">
-                <input type="number" id="menuQty_${index}" value="0" min="0" oninput="calculateTotal()" />
+                <input type="number" id="menuQty_${index}" value="0" min="0" inputmode="numeric" oninput="calculateTotal()" />
                 <button type="button" onclick="changeQuantity(${index}, -1)">-</button>
                 <button type="button" onclick="changeQuantity(${index}, 1)">+</button>
             </td>
